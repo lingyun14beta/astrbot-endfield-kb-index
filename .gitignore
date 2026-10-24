@@ -1,0 +1,8 @@
+dist/
+*.sqlite3
+*.sqlite3.zip
+*.zip
+*.sha256
+__pycache__/
+*.pyc
+.venv/
