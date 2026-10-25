@@ -83,14 +83,30 @@ python scripts/package.py --input dist/endfield_kb.sqlite3 --version 1.6.3-r1 --
 # 只发 GitHub
 python scripts/publish.py --version 1.6.3-r1
 
-# 同时上传 ModelScope
+# 同时上传 ModelScope（需要 ms CLI）
 python scripts/publish.py --version 1.6.3-r1 --mirror
 ```
 
 依赖：`gh`（已登录）与 `ms`（`pip install modelscope` 后登录）。
 没有 `gh` 时也可以网页建 Release，把 `dist/` 里的文件拖上去。
 
-发布后确认两个直链都可下载：
+### ModelScope 镜像
+
+数据集：<https://modelscope.cn/datasets/lingyun14/astrbot-endfield-kb-index>
+
+没有 `ms` CLI 时用 SDK 脚本上传（白名单：zip、sha256、manifest、README、LICENSE-INDEX；
+构建用的原始 sqlite 不在白名单里）：
+
+```powershell
+$env:MODELSCOPE_API_TOKEN = "你的令牌"   # Linux/macOS: export MODELSCOPE_API_TOKEN=...
+python scripts/upload_modelscope.py
+```
+
+令牌在 <https://modelscope.cn/my/myaccesstoken> 生成。也可以先
+`python -c "from modelscope.hub.api import HubApi; HubApi().login('令牌')"` 存下登录态，
+之后脚本不需要再传。
+
+上传后确认两个直链都可下载：
 
 ```
 https://github.com/lingyun14beta/astrbot-endfield-kb-index/releases/latest/download/endfield_kb-latest.sqlite3.zip
@@ -99,6 +115,7 @@ https://www.modelscope.cn/api/v1/datasets/lingyun14/astrbot-endfield-kb-index/re
 ```
 
 > `releases/latest/download/...` 只有在发布过非 draft、非 prerelease 的 Release 之后才有效。
+> ModelScope 那边数据集许可证字段保持 `other`，README.md 会作为数据集卡片展示。
 
 ## 插件如何消费
 
