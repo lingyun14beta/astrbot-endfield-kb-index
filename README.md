@@ -14,7 +14,7 @@
 | `scripts/package.py` | 打包 zip、算 sha256、生成 manifest |
 | `scripts/publish.py` | 发布 GitHub Release，可选同步 ModelScope |
 | `manifest.example.json` | 清单格式示例 |
-| `LICENSE-INDEX.txt` | 索引使用条款（不适用插件代码的 AGPL） |
+| `LICENSE-INDEX.txt` | 索引数据许可与来源声明（索引不适用插件代码的 AGPL） |
 
 构建产物（`dist/`）与 Release 资产不进 git：
 
@@ -103,10 +103,16 @@ https://www.modelscope.cn/api/v1/datasets/lingyun14/astrbot-endfield-kb-index/re
 
 ## 许可
 
-- **索引文件**：`LicenseRef-PRTS-Corpus-Terms`，见 [LICENSE-INDEX.txt](LICENSE-INDEX.txt)，不适用插件代码的 AGPL
-- **原始语料**：不随本仓库分发，需求方自行从 PRTS.chat 资料集下载
-- **游戏内容**：权利归上海鹰角开拓者网络科技有限公司及相关权利人
-- **整理内容**：权利归 PRTS.chat
+本仓库有意采用与上游 PRTS.chat 相同的分层写法：代码与数据分开授权，数据不挂
+一个自造的 SPDX 标识。
+
+- **索引数据**：保留权利，仅授予下载与本地检索使用；条款见 [LICENSE-INDEX.txt](LICENSE-INDEX.txt)。
+  不使用 SPDX 许可标识，也不适用插件代码的 AGPL
+- **构建脚本**：复用插件仓库的实现，随插件采用 AGPL-3.0-or-later
+- **原始语料**：不随本仓库分发，需求方自行从 PRTS.chat 资料集下载（该数据集标注为 `other`）
+- **游戏内容**：名称、文本及相关内容的权利归上海鹰角开拓者网络科技有限公司及相关权利人
+- **整理内容**：剧情总结、角色 Wiki、世界实体资料的权利归 PRTS.chat
+- **未纳入**：PRTS Wiki《泰拉年表》（CC BY-NC-SA 4.0）与《明日方舟》语料
 
 数据来源：PRTS.chat 终末地资料集（release 1.6.3）
 <https://modelscope.cn/datasets/HTiantian/prts-agent-corpus-endfield>
