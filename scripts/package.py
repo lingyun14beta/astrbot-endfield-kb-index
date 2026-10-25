@@ -46,7 +46,7 @@ def write_zip(db_path: Path, target: Path) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description="打包索引并生成 manifest")
     parser.add_argument("--input", type=Path, required=True, help="构建出的 sqlite")
-    parser.add_argument("--version", required=True, help="索引版本，如 1.6.3")
+    parser.add_argument("--version", required=True, help="索引版本，如 1.6.3-r1")
     parser.add_argument("--out", type=Path, default=Path("dist"), help="输出目录")
     parser.add_argument(
         "--github", default="lingyun14beta/astrbot-endfield-kb-index", help="owner/repo"
@@ -54,7 +54,7 @@ def main() -> int:
     parser.add_argument(
         "--modelscope", default="lingyun14/astrbot-endfield-kb-index", help="owner/name"
     )
-    parser.add_argument("--min-plugin", default="1.1.0", help="插件最低版本")
+    parser.add_argument("--min-plugin", default="1.1.1", help="插件最低版本")
     args = parser.parse_args()
 
     meta = read_meta(args.input)

@@ -56,6 +56,11 @@ def main() -> int:
     parser.add_argument("--plugin-dir", type=Path, help="插件仓库目录")
     parser.add_argument("--corpus", type=Path, help="语料发布目录")
     parser.add_argument("--out", type=Path, required=True, help="输出的 sqlite 路径")
+    parser.add_argument(
+        "--index-version",
+        default="",
+        help="索引修订号，如 1.6.3-r1；写入 meta.index_version，插件据此判断更新",
+    )
     args = parser.parse_args()
 
     plugin_dir = find_plugin_dir(args.plugin_dir)
@@ -69,7 +74,7 @@ def main() -> int:
     print(f"插件：{plugin_dir}")
     print(f"语料：{corpus_root}")
 
-    stats = build_index(corpus_root, args.out)
+    stats = build_index(corpus_root, args.out, index_version=args.index_version)
     print(
         "完成：{documents} 篇，{characters} 字，{seconds} 秒，{size_mb} MB".format(
             **stats

@@ -1,13 +1,13 @@
 {
-  "release_id": "endfield-1.6.3",
+  "release_id": "endfield-1.6.3-r1",
   "schema_version": 2,
-  "plugin_min_version": "1.1.0",
+  "plugin_min_version": "1.1.1",
   "documents": 16206,
   "characters": 3400744,
   "refs": 7890,
-  "built_at": "2026-10-24T13:22:39",
-  "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-  "size": 13245789,
+  "built_at": "2026-10-25 19:24:57",
+  "sha256": "862da68d4f2072be34f968e6a292d5c607ea36549c935cab47d3a6f15d1623c9",
+  "size": 13146207,
   "urls": [
     "https://github.com/lingyun14beta/astrbot-endfield-kb-index/releases/latest/download/endfield_kb-latest.sqlite3.zip",
     "https://www.modelscope.cn/api/v1/datasets/lingyun14/astrbot-endfield-kb-index/repo?Revision=master&FilePath=endfield_kb-latest.sqlite3.zip"
