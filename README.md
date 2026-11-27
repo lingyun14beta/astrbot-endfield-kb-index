@@ -6,6 +6,8 @@
 - 本仓库：<https://github.com/lingyun14beta/astrbot-endfield-kb-index>
 - ModelScope 镜像：<https://modelscope.cn/datasets/lingyun14/astrbot-endfield-kb-index>
 
+当前索引：`1.7.2-r1`，17,177 篇 / 3,839,236 字 / 出处 10,140 处，schema 2。
+
 ## 目录
 
 | 路径 | 作用 |
@@ -20,7 +22,7 @@
 
 ```
 dist/
-├─ endfield_kb-1.6.3-r3.sqlite3.zip
+├─ endfield_kb-1.7.2-r1.sqlite3.zip
 ├─ endfield_kb-latest.sqlite3.zip
 ├─ *.sha256
 └─ manifest.json
@@ -32,16 +34,16 @@ dist/
 
 | 写法 | 含义 |
 |---|---|
-| `1.6.3` | 语料版本，跟着 PRTS 走 |
-| `1.6.3-r1` | 同一份 1.6.3 语料的第 1 次索引修订：清洗、分词、结构、许可文案等我们这边的优化 |
-| `1.6.3-r2` | 同一份 1.6.3 语料的第 2 次修订：清理游戏模板占位符（`#__time__#`、`__ltItems__#` 等） |
-| `1.6.3-r3` | 同一份 1.6.3 语料的第 3 次修订：增加内容形式 / 角色 / 活动元数据，schema 仍为 2 |
-| `1.7.0-r1` | 语料升到 1.7.0 之后的第一次修订 |
+| `1.7.2` | 语料版本，跟着 PRTS 走 |
+| `1.7.2-r1` | **当前索引**：语料升到终末地 1.7.2 后的第一次修订，新增武陵城、应龙关、景玉谷等区域剧情与档案 |
+| `1.6.3-r3` | 上一版索引：同一份 1.6.3 语料，增加内容形式 / 角色 / 活动元数据，schema 仍为 2 |
+| `1.6.3-r2` | 历史修订：清理游戏模板占位符（`#__time__#`、`__ltItems__#` 等） |
+| `1.6.3-r1` | 历史修订：清洗、分词、结构、许可文案等我们这边的优化 |
 
 修订号只解决「语料没变、我们的产物变了」。语料一变，前面的版本号跟着变，修订号从 `r1` 重新开始。
 
-- Tag：`data-v1.6.3-r3`，一版一 tag，资产只读
-- 版本化资产：`endfield_kb-1.6.3-r3.sqlite3.zip`
+- Tag：`data-v1.7.2-r1`，一版一 tag，资产只读
+- 版本化资产：`endfield_kb-1.7.2-r1.sqlite3.zip`
 - 别名资产：`endfield_kb-latest.sqlite3.zip`，覆盖更新
 - 索引内 `meta.index_version` 写的就是这个版本号，插件读它判断要不要更新
 - zip 使用固定成员名 `endfield_kb.sqlite3` 与固定时间戳，**同样的 sqlite 每次打包得到同样的 sha256**
@@ -52,11 +54,11 @@ dist/
 
 ```bash
 # 生成 sqlite（约 30–60 秒）
-python tools/build_index.py --index-version 1.6.3-r3 --out dist/endfield_kb.sqlite3
+python tools/build_index.py --index-version 1.7.2-r1 --out dist/endfield_kb.sqlite3
 
 # 语料目录不是最新时手动指定
 python tools/build_index.py --corpus ~/.dsh/prts-corpus/releases/<release> \
-    --index-version 1.6.3-r3 --out dist/endfield_kb.sqlite3
+    --index-version 1.7.2-r1 --out dist/endfield_kb.sqlite3
 
 # 插件仓库不在同级目录时
 python tools/build_index.py --plugin-dir ../astrbot_plugin_endfield_kb \
@@ -66,7 +68,7 @@ python tools/build_index.py --plugin-dir ../astrbot_plugin_endfield_kb \
 ## 打包
 
 ```bash
-python scripts/package.py --input dist/endfield_kb.sqlite3 --version 1.6.3-r3 --out dist
+python scripts/package.py --input dist/endfield_kb.sqlite3 --version 1.7.2-r1 --out dist
 ```
 
 产出 zip、`.sha256` 与 `manifest.json`。`manifest.json` 的字段：
@@ -83,10 +85,10 @@ python scripts/package.py --input dist/endfield_kb.sqlite3 --version 1.6.3-r3 --
 
 ```bash
 # 只发 GitHub
-python scripts/publish.py --version 1.6.3-r3
+python scripts/publish.py --version 1.7.2-r1
 
 # 同时上传 ModelScope（需要 ms CLI）
-python scripts/publish.py --version 1.6.3-r3 --mirror
+python scripts/publish.py --version 1.7.2-r1 --mirror
 ```
 
 依赖：`gh`（已登录）与 `ms`（`pip install modelscope` 后登录）。
@@ -144,7 +146,7 @@ https://www.modelscope.cn/api/v1/datasets/lingyun14/astrbot-endfield-kb-index/re
 - **整理内容**：剧情总结、角色 Wiki、世界实体资料的权利归 PRTS.chat
 - **未纳入**：PRTS Wiki《泰拉年表》（CC BY-NC-SA 4.0）与《明日方舟》语料
 
-数据来源：PRTS.chat 终末地资料集（release 1.6.3）
+数据来源：PRTS.chat 终末地资料集（release 1.7.2）
 <https://modelscope.cn/datasets/HTiantian/prts-agent-corpus-endfield>
 
 本项目为非官方社区项目，与游戏开发商、发行商无隶属或背书关系。
